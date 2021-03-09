@@ -19,3 +19,11 @@ def getAllTables(repo):
     repo = getRepo(repo)
     result = read_pandas_sql(repo, query)
     return result.to_json()
+
+def getDataFromQuery(repo, query):
+    if query.split(' ')[0] == 'SELECT':
+        repo = getRepo(repo)
+        result = read_pandas_sql(repo, query)
+        return result.to_json()
+    else:
+        return None
