@@ -1,22 +1,15 @@
-from doltpy.cli import Dolt
+from doltpy.cli import Dolt, DoltException
 from os import listdir
 
-def getRepo(repoName: str):
-    if repoName.split('/')[1] in listdir('./'):
-        localRepoName = './' + repoName.split('/')[1]
-        dolt = Dolt(localRepoName)
-        dolt.pull()
-    else:
-        dolt = Dolt.clone(repoName)
-    return dolt
-
-# This function and branchSupportGetRepo are the beginnings of a way to run queries on specific commits and branches
 def updateData(dolt: Dolt, branchName: str):
-    dolt.checkout(branchName)
-    dolt.pull()
-    return repo
+    try:
+        print("Switch to branch", branchName)
+        dolt.pull()
+        return dolt
+    except DoltException:
+        return dolt
 
-def branchSupportGetRepo(repoName: str, branchName: str):
+def getRepo(repoName: str, branchName: str):
     if repoName.split('/')[1] in listdir('./'):
         localRepoName = './' + repoName.split('/')[1]
         dolt = Dolt(localRepoName)
