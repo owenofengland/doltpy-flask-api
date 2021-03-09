@@ -19,6 +19,3 @@ Dolt is great for versioning of data which can come in handy when cleaning or so
     * Install dependencies `pip3 install -r requirements.txt`
     * Export Flask environment variable `FLASK_APP=api`
     * Run flask app `flask run`
-
-## To Do
-* API restructuring for better support of branches and commit numbers as parameters in URL
